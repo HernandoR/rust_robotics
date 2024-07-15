@@ -24,4 +24,5 @@ model_predictive_trajectory_generator:
 
 # Dijkstra-motion-planner
 dijkstra:
+    @echo 'do remember to install gnuplot before run this recipe.'
     cargo run --bin dijkstra

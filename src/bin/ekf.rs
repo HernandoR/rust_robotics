@@ -1,7 +1,7 @@
 // Extended kalman filter (EKF) localization sample
 // author: Atsushi Sakai (@Atsushi_twi)
 //         Ryohei Sasaki (@rsasaki0109)
-
+#![cfg_attr(debug_assertions, allow(dead_code, unused_imports))]
 extern crate nalgebra;
 
 use plotlib::page::Page;

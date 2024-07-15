@@ -5,10 +5,10 @@
 // Author: Atsushi Sakai(@Atsushi_twi)
 //         TAI Lei
 //         Ryohei Sasaki(@rsasaki0109)
-
+#![cfg_attr(debug_assertions, allow(dead_code, unused_imports))]
 extern crate nalgebra as na;
 
-#[derive(Debug, Clone)] 
+#[derive(Debug, Clone)]
 struct Spline {
     a: Vec<f64>,
     b: Vec<f64>,
@@ -30,9 +30,9 @@ impl Spline {
         let a = y.clone();
         let a_mat = Spline::__calc_a(&h);
         let b_mat = Spline::__calc_b(&h, &a);
-        
+
         let a_mat_inv = a_mat.try_inverse().unwrap();
-        
+
         let c_na = a_mat_inv * b_mat;
         let mut c: Vec<f64> = Vec::with_capacity(c_na.len());
         for i in 0..c_na.len(){
@@ -40,7 +40,7 @@ impl Spline {
         }
         for i in 0..nx-1 {
             d.push((c[i+1] - c[i]) / (3. * h[i]));
-            let tb = (a[i + 1] - a[i]) / h[i] - h[i] * 
+            let tb = (a[i + 1] - a[i]) / h[i] - h[i] *
                 (c[i + 1] + 2.0 * c[i]) / 3.0;
             b.push(tb);
         }
@@ -51,8 +51,8 @@ impl Spline {
           x: x.to_vec(), y: y.to_vec(),
         }
     }
-    
-      
+
+
     fn calc(self, t: f64)-> f64 {
         let i = self.clone().__search_index(t);
         let x = self.x[i];
@@ -111,7 +111,7 @@ impl Spline {
         }
         b
     }
-    
+
     fn bisect(self, t: f64, s: usize, e: usize) -> usize
     {
         let mid = (s + e) / 2;
@@ -126,7 +126,7 @@ impl Spline {
 }
 
 
-#[derive(Debug, Clone)] 
+#[derive(Debug, Clone)]
 pub struct Spline2D {
     pub s: Vec<f64>,
     sx: Spline,
@@ -151,8 +151,8 @@ impl Spline2D {
         let nx = x.len();
         let mut dx: Vec<f64> = Vec::with_capacity(nx-1);
         let mut dy: Vec<f64> = Vec::with_capacity(nx-1);
-        
-        
+
+
         for i in 0..nx-1 {
             dx.push(x[i+1] - x[i]);
             dy.push(y[i+1] - y[i]);
@@ -189,19 +189,19 @@ impl Spline2D {
 
     fn calc_yaw(self, is: f64) -> f64
     {
-        let dx = self.sx.calcd(is); 
+        let dx = self.sx.calcd(is);
         let dy = self.sy.calcd(is);
-        let yaw = dy.atan2(dx); 
+        let yaw = dy.atan2(dx);
         yaw
     }
-    
+
 }
 
-pub fn calc_spline_course(x: Vec<f64>, y: Vec<f64>, ds: f64) -> 
+pub fn calc_spline_course(x: Vec<f64>, y: Vec<f64>, ds: f64) ->
 (Vec<(f64,f64)>, Vec<f64>, Vec<f64>, Vec<f64>)
 {
     let sp = Spline2D::new(x, y);
-    let s_end = sp.s[sp.s.len()-1]; 
+    let s_end = sp.s[sp.s.len()-1];
     let n = (s_end / ds) as usize;
     let mut r: Vec<(f64,f64)> = Vec::with_capacity(n);
     let mut ryaw: Vec<f64> = Vec::with_capacity(n);
