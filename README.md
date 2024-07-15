@@ -5,8 +5,8 @@ This package is a rust implementation of [PythonRobotics](https://github.com/Ats
 
 Build
 ```
-git clone https://github.com/rsasaki0109/RustRobotics.git
-cd RustRobotics
+git clone https://github.com/HernandoR/rust_robotics.git
+cd rust_robotics
 cargo build
 ```
 
@@ -16,27 +16,29 @@ cargo run --bin ekf
 ```
 
 # Table of Contents
-   * [Localization](#localization)
-      * [Extended kalman filter localization](#extended-kalman-filter-localization)
-      * Particle filter localization
-   * [SLAM](#slam)
-      * Iterative Closest Point
-      * FastSLAM 1.0
-   * [Path Planning](#path-planning)
-      * [Bezier Path](#bezier-path)
-      * [Cubic Spline](#cubic-spline)
-      * [Dynamic Window Approach](#dynamic-window-approach)
-      * [Model Predictive Trajectory Generator](#model-predictive-trajectory-generator)
-      * [Dijkstra algorithm](#dijkstra-algorithm)
-      * Potential Field algorithm
-      * State Lattice Planner
-      * Rapidly-Exploring Random Trees (RRT)
-   * [Path Tracking](#path-tracking)
-      * [Move to Pose](#move-to-pose)
-      * [Pure Pursuit](#pure-pursuit)
-      * [Stanley Control](#stanly-control)
-      * [LQR steer control](#lqr-steer-control)
-      * Nonlinear Model predictive control with C-GMRES
+- [RustRobotics](#rustrobotics)
+- [Table of Contents](#table-of-contents)
+- [Localization](#localization)
+  - [Extended Kalman Filter Localization](#extended-kalman-filter-localization)
+  - [Particle Filter Localization](#particle-filter-localization)
+- [SLAM](#slam)
+  - [Iterative Closest Point](#iterative-closest-point)
+  - [FastSLAM 1.0](#fastslam-10)
+- [Path Planning](#path-planning)
+  - [Bezier Path](#bezier-path)
+  - [Cubic Spline](#cubic-spline)
+  - [Dynamic Window Approach](#dynamic-window-approach)
+  - [Model Predictive Trajectory Generator](#model-predictive-trajectory-generator)
+  - [Dijkstra algorithm](#dijkstra-algorithm)
+  - [Potential Field algorithm](#potential-field-algorithm)
+  - [State Lattice Planner](#state-lattice-planner)
+  - [Rapidly-Exploring Random Trees](#rapidly-exploring-random-trees)
+- [Path Tracking](#path-tracking)
+  - [Move to Pose](#move-to-pose)
+  - [Pure Pursuit](#pure-pursuit)
+  - [Stanly Control](#stanly-control)
+  - [LQR steer control](#lqr-steer-control)
+  - [Nonlinear Model predictive control with C-GMRES](#nonlinear-model-predictive-control-with-c-gmres)
 
 # Localization
 ## Extended Kalman Filter Localization

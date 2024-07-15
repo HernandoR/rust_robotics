@@ -1,7 +1,7 @@
 [package]
 name = "rust_robotics"
 version = "0.1.0"
-authors = ["ryohei sasaki <rsasaki0109@gmail.com>"]
+authors = ["ryohei sasaki <rsasaki0109@gmail.com>", "Hernando Leo <lzhen.dev@outlook.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
